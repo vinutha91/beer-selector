@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "beer-selector": {
+      "projectType": "application",
+      "root": "apps/beer-selector",
+      "sourceRoot": "apps/beer-selector/src",
+      "prefix": "beer-selector",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/beer-selector",
+            "index": "apps/beer-selector/src/index.html",
+            "main": "apps/beer-selector/src/main.ts",
+            "polyfills": "apps/beer-selector/src/polyfills.ts",
+            "tsConfig": "apps/beer-selector/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/beer-selector/src/favicon.ico",
+              "apps/beer-selector/src/assets"
+            ],
+            "styles": ["apps/beer-selector/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/beer-selector/src/environments/environment.ts",
+                  "with": "apps/beer-selector/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "beer-selector:build:production"
+            },
+            "development": {
+              "browserTarget": "beer-selector:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "beer-selector:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/beer-selector/src/**/*.ts",
+              "apps/beer-selector/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/beer-selector"],
+          "options": {
+            "jestConfig": "apps/beer-selector/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "beer-selector-e2e": {
+      "root": "apps/beer-selector-e2e",
+      "sourceRoot": "apps/beer-selector-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/beer-selector-e2e/cypress.json",
+            "tsConfig": "apps/beer-selector-e2e/tsconfig.e2e.json",
+            "devServerTarget": "beer-selector:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "beer-selector:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/beer-selector-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "beer-selector"
+}
