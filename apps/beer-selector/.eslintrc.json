@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "beer-selector",
+            "prefix": "bs",
             "style": "kebab-case"
           }
         ]

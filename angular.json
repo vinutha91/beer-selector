@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/beer-selector",
       "sourceRoot": "apps/beer-selector/src",
-      "prefix": "beer-selector",
+      "prefix": "bs",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

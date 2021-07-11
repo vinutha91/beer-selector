@@ -1,1 +1,14 @@
-<p>search works!</p>
+<h2>Search</h2>
+<div class="search search--section">
+    <form [formGroup]="searchForm">
+        <input type="text" placeholder="Search" class="search--section__search-text" formControlName="query"/>
+
+        <input type="radio" id="name" name="facet" value="name" formControlName="facet">
+        <label for="name">Name</label>
+        <input type="radio" id="description" name="facet" value="description" formControlName="facet">
+        <label for="description">Description</label>
+
+        <button [disabled]="!searchForm.valid" (click)="search()">Search</button>
+        <p class="search--error" *ngIf="!searchForm.valid && searchForm.controls.query.errors?.pattern">Invalid search input. A-Z, a-z, - and space are allowed.</p>
+    </form>
+</div>

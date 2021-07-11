@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { Beer } from '../../models/beer.model';
 
 @Component({
   selector: 'bs-beer',
@@ -6,11 +8,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./beer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BeerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class BeerComponent {
+  @Input() beer!: Beer;
 }

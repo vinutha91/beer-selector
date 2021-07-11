@@ -1,6 +1,55 @@
 :host {
     display: flex;
     flex: 1;
+    flex-direction: column;
     border: 1px solid red;
     width: 100%;
+    max-height: 20rem;
+}
+
+.beer {
+    &--details {
+        display: flex;
+        flex: 1;
+        border: 1px solid blue;
+
+        &__image, &__description, &__actions {
+            display: flex;
+            border: 1px solid green;
+        }
+
+        &__image, &__actions {
+            width: 20rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__description {
+            flex: 1;
+            font-size: 2rem;
+            align-items: center;
+        }
+
+        &__image img {
+            height: 15rem;
+        }
+
+        &__actions {
+            flex-direction: column;
+
+            button {
+                font-size: 2rem;
+                color: #fff;
+                margin: 1rem;
+                border-radius: 1rem;
+                padding: .5rem;
+                background-color: #8a2be2;
+
+                &:hover {
+                    background-color: #7024b8;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }

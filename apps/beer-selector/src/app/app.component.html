@@ -1,2 +1,7 @@
 <h1>Welcome to Beer Selector!</h1>
-<bs-random-beer></bs-random-beer>
+<bs-random-beer 
+*ngIf="(randomBeer$ | async) as randomBeer" 
+[beer]="randomBeer"
+(getRandomBeerEvent)="getRandomBeer($event)"></bs-random-beer>
+<bs-search (searchEvent)="search($event)"></bs-search>
+<bs-search-results *ngIf="(searchResults$ | async) as searchResults" [searchResults]="searchResults"></bs-search-results>

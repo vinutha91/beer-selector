@@ -1,0 +1,13 @@
+<h2>{{beer[0].name}}</h2>
+<div class="beer--details">
+    <div class="beer--details__image">
+        <img alt="beer images" src="assets/beer.webp"/>
+    </div>
+    <div class="beer--details__description">
+        {{beer[0].description}}
+    </div>
+    <div class="beer--details__actions">
+        <button class="beer--details__actions--random-alcoholic" (click)="getRandomBeer('alcoholic')">Another Beer</button>
+        <button class="beer--details__actions--random-non-alcoholic" (click)="getRandomBeer('non-alcoholic')">Random non alcoholic beer</button>
+    </div>
+</div>
